@@ -248,10 +248,26 @@ body{
     cursor:pointer;
 }
 
-/* Ticket buy area*/
+/* Área de compra do ingresso */
+
+.section #overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    width:100%;
+    height:100%;
+    background-color: black;
+    opacity:0.5;
+    display:none;
+}
 
 .section #choice-area{
-    width:100%;
+    z-index:2;
+    position: absolute;
+    width:65%;
+    top:100px;
+    left:calc(65%/3);
     background-color: antiquewhite;
     border-radius: 20px;
     margin:8px 0px 0px 0px;
@@ -276,46 +292,54 @@ body{
     background-color:rgb(204, 10, 10);
 }
 
-.section #choice-area .date-area{
-    width:100%;
-    display:flex;
-    place-content: center;
-    column-gap: 9px;
-    padding:15px 10px;
-}
-
-.section #choice-area .date-area .date > button{
-    padding: 6px 10px;
-    font-size:20px;
-    cursor:pointer;
-    border-radius:10px;
-    border:none;
-    background-color:rgb(204, 10, 10);
-}
-
 .section #choice-area .session{
     display:flex;
     justify-content: space-between;
     width:100%;
     height:350px;
     padding:15px 20px;
-    border:3px solid red;
+    margin:15px 0 5px 0;
 }
 
-.section #choice-area .session .area1{
-    width:18.5%;
+.section #choice-area .session .area1, .section #choice-area .session .area2, .section #choice-area .session .area3{
+    display:flex;
+    width:18%;
     height:100%;
-    border:2px solid red;
+    justify-content: space-between;
+}
+
+.area1 > ul, .area2 > ul, .area3 > ul{
+    list-style-type:none;
+    width:21%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.area1 > ul > .seat, .area2 > ul > .seat, .area3 > ul > .seat{
+    width:100%;
+    height:9%;
+    background-color:red;
+    padding:2px;
+    border-radius: 50% 50% 3px 3px;
 }
 
 .section #choice-area .session .area2{
-    width:55.5%;
-    height:100%;
-    border:2px solid red;
+    width:54%;
 }
 
-.section #choice-area .session .area3{
-    width:18.5%;
-    height:100%;
-    border:2px solid red;
+.area2 > ul{
+    width:7%;
+}
+
+.screen{
+    width:100%;
+    display:grid;
+    place-content:center;
+}
+
+.screen > h4{
+    background-color:red;
+    padding:3px 350px;
+    margin:20px 0 10px 0;
 }
