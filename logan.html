@@ -9,9 +9,11 @@
 <body>
     
     <div class="header">
-        <div class="logo">
-            CineLogan
-        </div>
+        <a href="index.html">
+            <div class="logo">
+                CineLogan
+            </div>
+        </a>
         <div class="navbar">
             <li>Em Cartaz</li>
             <li>Em Breve</li>
@@ -41,12 +43,48 @@
             </div>
 
             <div class="button">
-                <button>Comprar Ingresso</button>
-            </div> 
+                <button onclick="displayChoiceArea()">Comprar Ingresso</button>
+            </div>
+
+            <div id="choice-area">
+
+                <div class="exit-button">
+                    <button onclick="closeChoiceArea()"></button>
+                </div>
+
+                <div class="date-area">
+                    <div class="date" id="date1" onclick="displayDate1()">
+                        <button>10/05</button>
+                    </div>
+                    <div class="date" id="date2" onclick="displayDate2()">
+                        <button>11/05</button>
+                    </div>
+                    <div class="date" id="date3" onclick="displayDate3()">
+                        <button>12/05</button>
+                    </div>
+                    <div class="date" id="date4" onclick="displayDate4()">
+                        <button>13/05</button>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="area1">
+
+                    </div>
+                    <div class="area2">
+                        
+                    </div>
+                    <div class="area3">
+                        
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
