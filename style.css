@@ -304,7 +304,7 @@ body{
     position: absolute;
     background-color: rgba(250, 235, 215, 0.86);
     width:65%;
-    top:70px;
+    top:35px;
     left:18%;
     border-radius: 20px;
     margin:8px 0px 0px 0px;
@@ -321,8 +321,8 @@ body{
     background-image: url("images/close-tab.png");
     background-size: cover;
     background-position: center;
-    height:55px;
-    width:55px;
+    height:45px;
+    width:45px;
     cursor:pointer;
     border-radius:10px;
     border:none;
@@ -330,7 +330,7 @@ body{
 }
 
 .section #choice-area .description{
-    width: 100%;
+    width: 95%;
     display:flex;
     place-content: center;
     align-items: center;
@@ -362,6 +362,18 @@ body{
 
 .section #choice-area .description > p:nth-of-type(odd){
     margin-right:17px;
+}
+
+.section .price{
+    width:100%;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.section .price > p{
+    color:black;
+    margin-left:-3px;
+    font-size:14px;
 }
 
 .section #choice-area .session{
@@ -409,6 +421,34 @@ body{
     width:7%;
 }
 
+.area2 > ul > .wheelchair-area1{
+    background-image: url("images/wheelchair-icon-1.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area2{
+    background-image: url("images/wheelchair-icon-2.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area3{
+    background-image: url("images/wheelchair-icon-3.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
+.area2 > ul > .wheelchair-area4{
+    background-image: url("images/wheelchair-icon-4.png");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 20px;
+}
+
 .screen{
     width:100%;
     display:grid;
@@ -428,9 +468,25 @@ body{
     cursor:pointer;
 }
 
+.area1 > ul > .purchased:hover, .area2 > ul > .purchased:hover, .area3 > ul > .purchased:hover{
+    transform:none;
+    cursor:default;
+}
+
 .area1 > ul > .seat:active, .area2 > ul > .seat:active, .area3 > ul >.seat:active{
     transform:scale(1.1);
     cursor:pointer;
+}
+
+.area1 > ul > .purchased:active, .area2 > ul > .purchased:active, .area3 > ul >.purchased:active{
+    transform:none;
+    cursor:default;
+}
+
+.purchase{
+    display:flex;
+    place-content: center;
+    width:82%;
 }
 
 .info-compra{
@@ -440,11 +496,31 @@ body{
     padding:10px;
 }
 
-.info-compra > p{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.info-compra > .displaySeats, .info-compra > .displayPrice{
+    display:flex;
     width:50%;
-    margin-left:40%;
+    margin-left:37%;
     text-align:left;
     margin-top:5px;
+}
+
+.info-compra > .displaySeats > p, .info-compra > .displayPrice > p{
     color:black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-right:5px;
+}
+
+.purchase > button{
+    margin-top:18px;
+    font-weight:bold;
+    color:white;
+    text-shadow:1px 1px black;
+    background-color: red;
+    width:200px;
+    height:44px;
+    font-size:15px;
+    border:none;
+    border-radius: 25px;
+    padding:5px 15px;
+    cursor:pointer;
 }
