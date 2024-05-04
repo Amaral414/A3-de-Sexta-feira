@@ -330,7 +330,7 @@ body{
 }
 
 .section #choice-area .description{
-    width: 95%;
+    width: 98%;
     display:flex;
     place-content: center;
     align-items: center;
@@ -372,7 +372,7 @@ body{
 
 .section .price > p{
     color:black;
-    margin-left:-3px;
+    margin-left:18px;
     font-size:14px;
 }
 
