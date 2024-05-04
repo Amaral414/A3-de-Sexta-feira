@@ -4,9 +4,22 @@ let seats = document.getElementById("seats");
 let selectedSeats = [];
 let purchasedSeats = [];
 let total = 0;
+let date;
+let time;
 
+const logan = {
+    session1: [[], "05/06", "13:00"],
+    session2: [[], "05/06", "13:00"],
+    session3: [[], "05/06", "13:00"],
+
+}
 purchase();
 totalPrice.textContent = `R$ ${total},00`
+
+function pickSession(value){
+    selectedSeats = value;
+    purchase();
+}
 
 function displayChoiceArea(){
     const choiceArea = document.getElementById("choice-area");
