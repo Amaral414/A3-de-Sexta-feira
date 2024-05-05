@@ -50,13 +50,11 @@ function closeDateArea(){
     overlay.style.display = "none";
 }
 
-function displayChoiceArea(value){
+function displayChoiceArea(){
     const dateArea = document.getElementById("date-area");
     const choiceArea = document.getElementById("choice-area")
     dateArea.style.display = "none";
     choiceArea.style.display = "block";
-    selectedSeats = value[0];
-    purchase();
 }
 
 function closeChoiceArea(){
