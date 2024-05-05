@@ -43,10 +43,83 @@
             </div>
 
             <div class="button">
-                <button onclick="displayChoiceArea()">Comprar Ingresso</button>
+                <button onclick="displayDateArea()">Comprar Ingresso</button>
             </div>
 
             <div id="overlay"></div>
+
+            <div id="date-area">
+                <div class="exit-button">
+                    <button onclick="closeDateArea()"></button>
+                </div>
+                <div class="dates">
+                    <h3>Selecione uma data:</h3>
+                    <div class="options">
+                        <button onclick="displaySessions('logan13/06')">13/06</button>
+                        <button onclick="displaySessions('logan14/06')">14/06</button>
+                        <button onclick="displaySessions('logan15/06')">15/06</button>
+                        <button onclick="displaySessions('logan16/06')">16/06</button>
+                        <button onclick="displaySessions('logan17/06')">17/06</button>
+                        <button onclick="displaySessions('logan18/06')">18/06</button>
+                    </div>
+                </div>
+                <div class="sessions">
+                    <div class="date" style="display:none" id="logan13/06">
+                        <h3>Selecione uma sessão (13/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(logan.session1)">11:00</button>
+                            <button onclick="displayChoiceArea(logan.session2)">14:00</button>
+                            <button onclick="displayChoiceArea(logan.session3)">17:00</button>
+                            <button onclick="displayChoiceArea(logan.session4)">20:00</button>
+                        </div>
+                    </div>
+                    <div class="date"style="display:none" id="logan14/06">
+                        <h3>Selecione uma sessão (14/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">12:00</button>
+                            <button onclick="displayChoiceArea(this)">15:00</button>
+                            <button onclick="displayChoiceArea(this)">18:00</button>
+                            <button onclick="displayChoiceArea(this)">21:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan15/06">
+                        <h3>Selecione uma sessão (15/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">13:00</button>
+                            <button onclick="displayChoiceArea(this)">16:00</button>
+                            <button onclick="displayChoiceArea(this)">19:00</button>
+                            <button onclick="displayChoiceArea(this)">22:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan16/06">
+                        <h3>Selecione uma sessão (16/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea(this)">11:00</button>
+                            <button onclick="displayChoiceArea(this)">14:00</button>
+                            <button onclick="displayChoiceArea(this)">17:00</button>
+                            <button onclick="displayChoiceArea(this)">20:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan17/06">
+                        <h3>Selecione uma sessão (17/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea()">12:00</button>
+                            <button onclick="displayChoiceArea()">15:00</button>
+                            <button onclick="displayChoiceArea()">18:00</button>
+                            <button onclick="displayChoiceArea()">21:00</button>
+                        </div>
+                    </div>
+                    <div class="date" style="display:none" id="logan18/06">
+                        <h3>Selecione uma sessão (18/06):</h3>
+                        <div class="options">
+                            <button onclick="displayChoiceArea()">13:00</button>
+                            <button onclick="displayChoiceArea()">16:00</button>
+                            <button onclick="displayChoiceArea()">19:00</button>
+                            <button onclick="displayChoiceArea()">22:00</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div id="choice-area">
 
