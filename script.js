@@ -1,21 +1,17 @@
 let totalPrice = document.getElementById("total");
 let seats = document.getElementById("seats");
-
-let selectedSeats = [];
-let purchasedSeats = [];
+let session;
 let total = 0;
 let priorDate;
 let date;
 let time;
 
 const logan = {
-    session1: [["A1", "A2", "A3", "A4"], "13/06", "11:00"],
-    session2: [["B1", "B2", "B3", "B4"], "13/06", "14:00"],
-    session3: [["C1", "C2", "C3", "C4"], "13/06", "17:00"],
-    session3: [["D1", "D2", "D3", "D4"], "13/06", "20:00"],
+    session1: [["A1", "A2", "A3", "A4"]/*purchased seats*/, []/*selected seats*/, "13/06", "11:00"],
+    session2: [["B1", "B2", "B3", "B4"]/*purchased seats*/, []/*selected seats*/, "13/06", "14:00"],
+    session3: [["C1", "C2", "C3", "C4"]/*purchased seats*/, []/*selected seats*/, "13/06", "17:00"],
+    session4: [["D1", "D2", "D3", "D4"]/*purchased seats*/, []/*selected seats*/, "13/06", "20:00"],
 }
-
-purchase();
 totalPrice.textContent = `R$ ${total},00`
 
 function displaySessions(selectedDate){
@@ -50,7 +46,22 @@ function closeDateArea(){
     overlay.style.display = "none";
 }
 
-function displayChoiceArea(){
+function displayChoiceArea(value){
+    session = value;
+
+    for(let i of document.getElementsByClassName("seat")){
+        i.style.backgroundColor = "rgb(24, 201, 5)";
+        i.style.cursor = "pointer";
+    }
+
+    document.getElementById("unavailable").style.backgroundColor = "red";
+
+    for(let i of session[0]){
+        purchased = document.getElementById(i)
+        purchased.style.backgroundColor = "red";
+        purchased.style.cursor = "regular";
+    }
+
     const dateArea = document.getElementById("date-area");
     const choiceArea = document.getElementById("choice-area")
     dateArea.style.display = "none";
@@ -62,20 +73,24 @@ function closeChoiceArea(){
     const overlay = document.getElementById("overlay");
     choiceArea.style.display = "none";
     overlay.style.display = "none";
+    session[1] = [];
+    totalPrice.textContent = `R$ ${total},00`
+    purchase();
 }
+
 
 function clickSeat(seat){
     const selectedSeat = document.getElementById(`${seat.id}`)
 
-    if (purchasedSeats.includes(seat.id)){
+    if (session[0].includes(seat.id)){
         return;
     }
 
     else{
-        if (selectedSeats.includes(seat.id) != true){
+        if (session[1].includes(seat.id) != true){
             selectedSeat.style.backgroundColor = "#8B008B";
-            selectedSeats.push(selectedSeat.id);
-            seats.textContent = selectedSeats.join(" ");
+            session[1].push(selectedSeat.id);
+            seats.textContent = session[1].join(" ");
             total += 30;
             totalPrice.textContent = `R$ ${total},00`
             return;
@@ -83,8 +98,8 @@ function clickSeat(seat){
         
         else{
             selectedSeat.style.backgroundColor = "rgb(24, 201, 5)";
-            selectedSeats = selectedSeats.filter((chosenSeat) => chosenSeat != seat.id)
-            seats.textContent = selectedSeats.join(" ");
+            session[1] = session[1].filter((chosenSeat) => chosenSeat != seat.id)
+            seats.textContent = session[1].join(" ");
             total -= 30;
             totalPrice.textContent = `R$ ${total},00`
             return;
@@ -93,15 +108,20 @@ function clickSeat(seat){
 }
 
 function purchase(){
-    for(let boughtSeat of selectedSeats){
+    
+    for(let boughtSeat of session[1]){
+        boughtSeat = document.getElementById(boughtSeat);
+        session[0].push(boughtSeat.id);
+        session[1] = session[1].filter((seats) => seats != boughtSeat.id)
+    }
+
+    for(let boughtSeat of session[0]){
         boughtSeat = document.getElementById(boughtSeat);
         boughtSeat.style.backgroundColor = "red";
-        boughtSeat.classList.add("purchased")
-        purchasedSeats.push(boughtSeat.id);
-        selectedSeats = selectedSeats.filter((seats) => seats != boughtSeat.id)
+        boughtSeat.classList.add("purchased");
     }
 
     total = 0;
     totalPrice.textContent = `R$ ${total},00`
-    seats.textContent = selectedSeats.join(" ");
+    seats.textContent = session[1].join(" ");
 }
