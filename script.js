@@ -90,7 +90,21 @@ function closeChoiceArea(){
     overlay.style.display = "none";
     session[1] = [];
     totalPrice.textContent = `R$ ${total},00`
-    purchase();
+    for(let boughtSeat of session[1]){
+        boughtSeat = document.getElementById(boughtSeat);
+        session[0].push(boughtSeat.id);
+        session[1] = session[1].filter((seats) => seats != boughtSeat.id)
+    }
+
+    for(let boughtSeat of session[0]){
+        boughtSeat = document.getElementById(boughtSeat);
+        boughtSeat.style.backgroundColor = "red";
+        boughtSeat.classList.add("purchased");
+    }
+
+    total = 0;
+    totalPrice.textContent = `R$ ${total},00`
+    seats.textContent = session[1].join(" ");
 }
 
 
@@ -130,10 +144,11 @@ function displayPurchaseArea(){
 function closePurchaseArea(){
     document.getElementById("overlay2").style.display = "none";
     document.getElementById("purchase-area").style.display = "none";
+    document.getElementById("ticket-area").style.display = "none";
 }
 
 function purchase(){
-    
+
     for(let boughtSeat of session[1]){
         boughtSeat = document.getElementById(boughtSeat);
         session[0].push(boughtSeat.id);
@@ -149,8 +164,7 @@ function purchase(){
     total = 0;
     totalPrice.textContent = `R$ ${total},00`
     seats.textContent = session[1].join(" ");
-    closePurchaseArea();
-    closeChoiceArea();
+    displayTickets();
 }
 
 function selectPayment(value){
@@ -163,4 +177,17 @@ function selectPayment(value){
         document.getElementById("card").style.display = "none";
         document.getElementById("qrcode").style.display = "block";
     }
+}
+
+function displayTickets(){
+    document.getElementById("ticket-area").style.display = "block";
+    document.getElementById("exit-ticket").style.display = "block";
+}
+
+function closeAll(){
+    document.getElementById("ticket-area").style.display = "none";
+    document.getElementById("purchase-area").style.display = "none";
+    document.getElementById("overlay2").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("choice-area").style.display = "none";
 }
