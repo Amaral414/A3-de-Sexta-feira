@@ -127,6 +127,11 @@ function displayPurchaseArea(){
     document.getElementById("purchase-area").style.display = "block";
 }
 
+function closePurchaseArea(){
+    document.getElementById("overlay2").style.display = "none";
+    document.getElementById("purchase-area").style.display = "none";
+}
+
 function purchase(){
     
     for(let boughtSeat of session[1]){
@@ -144,6 +149,8 @@ function purchase(){
     total = 0;
     totalPrice.textContent = `R$ ${total},00`
     seats.textContent = session[1].join(" ");
+    closePurchaseArea();
+    closeChoiceArea();
 }
 
 function selectPayment(value){
