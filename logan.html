@@ -401,7 +401,48 @@
                         </div>
                     </div>
 
-                    <button onclick="purchase()">Finalizar compra</button>
+                    <button onclick="displayPurchaseArea()">Finalizar compra</button>
+
+                    <div class="overlay2" id="overlay2"></div>
+
+                    <div class="info-area" id="purchase-area" style="display: none;">
+                        <div class="title">
+                            <p>Preencha os campos abaixo:</p>
+                        </div>
+                        <div class="first-name">
+                            <input type="text" required placeholder="Digite o seu nome">
+                        </div>
+                        <div class="last-name">
+                            <input type="text" required placeholder="Digite o seu sobrenome">
+                        </div>
+                        <div class="payment">
+
+                            <h4>Escolha um método de pagamento:</h4>
+
+                            <div class="options">
+                                <input name="payment" type="radio" id="debito" onclick="selectPayment('debito')">
+                                <label for="">Débito</label>
+
+                                <input name="payment" type="radio" id="credito" onclick="selectPayment('credito')">
+                                <label for="">Crédito</label>
+
+                                <input name="payment" type="radio" id="pix" onclick="selectPayment('pix')">
+                                <label for="">PIX</label>
+                            </div>
+                            <div class="card" id="card" style="display:none">
+                                <h5>Insira abaixo os dados do seu cartão:</h5>
+                                <input type="text" placeholder="Número do cartão">
+                                <input type="password" placeholder="Senha do cartão">
+                            </div>
+
+                            <div class="qrcode" id="qrcode" style="display:none">
+                                <img src="images/qrcode.png" alt="">
+                            </div>
+                    
+
+                        </div>
+                        <button>Finalizar</button>
+                    </div>
                 </div>
                 
             </div>
