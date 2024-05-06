@@ -122,6 +122,11 @@ function clickSeat(seat){
     } 
 }
 
+function displayPurchaseArea(){
+    document.getElementById("overlay2").style.display = "block";
+    document.getElementById("purchase-area").style.display = "block";
+}
+
 function purchase(){
     
     for(let boughtSeat of session[1]){
@@ -139,4 +144,16 @@ function purchase(){
     total = 0;
     totalPrice.textContent = `R$ ${total},00`
     seats.textContent = session[1].join(" ");
+}
+
+function selectPayment(value){
+    if (value == "debito" || value == "credito"){
+        document.getElementById("qrcode").style.display = "none"
+        document.getElementById("card").style.display = "block";
+    }
+
+    else{
+        document.getElementById("card").style.display = "none";
+        document.getElementById("qrcode").style.display = "block";
+    }
 }
