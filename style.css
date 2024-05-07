@@ -720,6 +720,7 @@ body{
 }
 
 .ticket-area .exit-button button{
+    position:relative;
     z-index:15;
     width:40px;
     height:40px;
@@ -731,6 +732,7 @@ body{
 }
 
 .ticket{
+    position:relative;
     background-image:url("images/ticket-logan.jpg");
     background-size:cover;
     background-repeat:no-repeat;
@@ -740,7 +742,7 @@ body{
 
 .ticket > span{
     position:absolute;
-    top:50px;
+    top:24px;
     left:2%;
     width:100px;
     height:23px;
@@ -750,12 +752,12 @@ body{
 }
 
 .ticket > p{
-    font-size:17px;
+    font-size:16px;
     text-shadow: none;
     position:absolute;
-    top: 48px;
+    top:24px;
     left:18%;
-    width:134px;
+    width:129px;
     height:23px;
     text-align:right;
     color:black;
@@ -765,7 +767,7 @@ body{
     font-size:22px;
     position:absolute;
     color:black;
-    top:222px;
+    top:189px;
     left:0px;
     width:299px;
     height:23px;
@@ -777,7 +779,7 @@ body{
     font-weight:bold;
     position:absolute;
     color:black;
-    top:255px;
+    top:223px;
     left:90px;
     width:115px;
     height:23px;
