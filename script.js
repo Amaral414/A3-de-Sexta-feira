@@ -51,9 +51,63 @@ function displaySessions(selectedDate){
 
 function displayDateArea(){
     let remove = document.getElementsByClassName("ticket");
-    for (i of remove){
+
+    for(let i of remove){
         i.remove();
     }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
+    for(let i of remove){
+        i.remove();
+    }
+
     const dateArea = document.getElementById("date-area");
     const overlay = document.getElementById("overlay");
     dateArea.style.display = "block";
@@ -198,7 +252,7 @@ function displayTickets(){
         ticket.innerHTML = `
                     <span id="moviedate">${date} - ${time}</span>
                     <p id="client">${document.getElementById("nome").value} ${document.getElementById("sobrenome").value}</p>
-                    <h4 id="barcode">${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}</h4>
+                    <h4 id="barcode">${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}</h4>
                     <h2 id="movieseat">${i}</h2>
                 `;
         ticket.classList.add("ticket")
