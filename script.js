@@ -50,63 +50,9 @@ function displaySessions(selectedDate){
 }
 
 function displayDateArea(){
-    let remove = document.getElementsByClassName("ticket");
+    let ticketList = document.getElementsByClassName("ticket");
 
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
-
-    for(let i of remove){
-        i.remove();
-    }
+    Array.from(ticketList).forEach(i => i.remove())
 
     const dateArea = document.getElementById("date-area");
     const overlay = document.getElementById("overlay");
@@ -199,8 +145,14 @@ function clickSeat(seat){
 }
 
 function displayPurchaseArea(){
-    document.getElementById("overlay2").style.display = "block";
-    document.getElementById("purchase-area").style.display = "block";
+    if(session[1].length > 0){
+        document.getElementById("overlay2").style.display = "block";
+        document.getElementById("purchase-area").style.display = "block";
+    }
+
+    else{
+
+    }
 }
 
 function closePurchaseArea(){
