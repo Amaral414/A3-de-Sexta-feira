@@ -413,10 +413,10 @@
                             <p>Preencha os campos abaixo:</p>
                         </div>
                         <div class="first-name">
-                            <input type="text" required placeholder="Digite o seu nome">
+                            <input type="text" required placeholder="Digite o seu nome" id="nome" autocomplete="off">
                         </div>
                         <div class="last-name">
-                            <input type="text" required placeholder="Digite o seu sobrenome">
+                            <input type="text" required placeholder="Digite o seu sobrenome" id="sobrenome" autocomplete="off">
                         </div>
                         <div class="payment">
 
@@ -451,14 +451,8 @@
             </div>
             
             <div class="ticket-area" id="ticket-area" style="display: none;">
-                <div class="exit-button">
+                <div class="exit-button" id="exit-ticket">
                     <button onclick="closeAll()">x</button>
-                </div>
-                <div class="ticket">
-                    <span id="moviedate">13/06 - 15:00</span>
-                    <p id="client">Felipe Godoy</p>
-                    <h4 id="barcode">319083901</h4>
-                    <h2 id="movieseat">A1</h2>
                 </div>
             </div>
 
