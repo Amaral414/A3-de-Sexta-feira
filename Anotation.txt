@@ -1,0 +1,11 @@
+classe filmes{
+    id
+    nome
+    descrição
+}
+
+classe usuario{
+    id 
+    nome
+    cpf
+}
