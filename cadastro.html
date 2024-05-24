@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styleCadLog.css">
+        <title>Cadastro</title>
+    </head>
+    <body>
+
+        <div class="header">
+            <a href="index.html">
+                <div class="logo">
+                    CineLogan
+                </div>
+            </a>
+            <div class="navbar">
+                <li>Em Cartaz</li>
+                <li>Em Breve</li>
+                <li>Próximo a Você</li>
+                <li>Seja Premium</li>
+            </div>
+            
+                <!-- Vou editar aqui-->
+                <div class="login">
+                    <a href="login.html">Fazer login</a>
+                </div>
+    
+        </div>
+
+        <div class="box">
+            <h1>Cadastro</h1>
+            <form action="">
+                <input type="text" class="nome" name="nome" placeholder="nome">
+                <input type="text" class="email" name="email" placeholder="email">
+                <input type="password" class="senha" name="senha" placeholder="senha">
+                <input type="password" class="repetirSenha" name="repetirSenha" placeholder="repetir senha">
+                <button>Cadastrar</button>
+            </form>
+
+        </div>       
+    </body>
+
+    <script>
+        const formulario = document.querySelector("form");
+        const Inome = document.querySelector(".nome");
+        const Iemail = document.querySelector(".email");
+        const Isenha = document.querySelector(".senha");
+        const IrepetirSenha = document.querySelector(".repetirSenha");
+
+        function cadastrar() {
+            fetch("http://localhost:800/cadastrar",
+                {
+                    headers:{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        nome: Inome.value,
+                        email: Iemail.value,
+                        senha: Isenha.value,
+                        repeSenha: IrepetirSenha.value,
+                    })
+                })
+            .then(function (res) {console.log(res)})
+            .catch(function (res) {console.log(res)})
+            
+        };
+
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault();
+
+            cadastrar();
+            limpar();
+            
+        });
+
+        function limpar(){
+            Inome.value = "";
+            Iemail.value = "";
+            Isenha.value = "";
+            IrepetirSenha.value = "";
+        };
+        
+
+    </script>
+</html>

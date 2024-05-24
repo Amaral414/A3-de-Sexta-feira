@@ -67,6 +67,7 @@ function displayDateArea() {
     overlay.style.display = "block";
 }
 
+
 function closeDateArea() {
     const dateArea = document.getElementById("date-area");
     const overlay = document.getElementById("overlay");
