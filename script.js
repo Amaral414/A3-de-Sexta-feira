@@ -56,7 +56,6 @@ function displaySessions(selectedDate) {
     }
 }
 
-//Vou editar aqui:
 function displayDateArea() {
     let ticketList = document.getElementsByClassName("ticket");
 
