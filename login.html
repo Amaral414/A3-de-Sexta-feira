@@ -1,1 +1,197 @@
-<a href="cadastro.html">Não possui cadastro?</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styleCadLog.css">
+        <title>Login</title>
+    </head>
+    <body>
+
+        <!-- Cabeçalho -->
+        
+        <div class="header">
+            <a href="index.html">
+                <div class="logo">
+                    CineMarkson
+                </div>
+            </a>
+            <div class="navbar">
+                <li>Em Cartaz</li>
+                <li>Em Breve</li>
+                <li>Próximo a Você</li>
+                <li>Seja Premium</li>
+            </div>
+            
+    
+        </div>
+
+        <div class="box">
+            <h1>Login</h1>
+            <form action="">
+                <input type="text" class="email" name="email" placeholder="email">
+                <input type="password" class="senha" name="senha" placeholder="senha">
+                <a href="cadastro.html">Não possui cadastro?</a>
+                <button class="button">Entrar</button>
+            </form>
+
+        </div>       
+    </body>
+
+
+
+
+        <!-- ======== SCRIPT ======== -->
+
+    <script>
+     
+    const formulario = document.querySelector("form");
+    const Iemail = document.querySelector(".email");
+    const Isenha = document.querySelector(".senha");
+
+        function cadastrar() {
+            fetch("http://localhost:8080/usuarios",
+                {
+                    headers:{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: "GET",
+                    body: JSON.stringify({
+                        email: Iemail.value,
+                        senha: Isenha.value,
+                    })
+                })
+            .then(function (res) {console.log(res)})
+            .catch(function (res) {console.log(res)})
+            
+        };
+
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault();
+
+            cadastrar();
+            limpar();
+            
+        });
+
+        function limpar(){
+            Iemail.value = "";
+            Isenha.value = "";
+        };
+
+        
+        
+
+    </script>
+
+
+
+
+        <!-- ======== ESTILO CSS ======== -->
+    
+    <style>
+        
+       
+        .box{
+            height: 500px;
+        }
+        .box, form{
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }          
+        input{
+            width: 250px;
+            height: 30px;
+            border-radius: 30px;
+            padding: 0 15px 0 15px;
+        }
+        
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            color:white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            overflow-x: hidden;
+            background-color:black;
+        }
+
+        .header{
+            padding:0px 20px;
+            display:flex;
+            font-size:20px;
+            border-bottom:5px rgba(255, 0, 0, 0.912) solid;
+        }
+        
+        .header > a{
+            text-decoration: none;
+            padding-top:30px;
+            padding-bottom:29px;
+            width:18%;
+            text-align:center;
+            cursor:pointer;
+        }
+
+        .header > a > .logo{
+            color:red;
+            font-family:sans-serif;
+            font-size:40px;
+            font-weight:bold;
+        }
+
+        .header .navbar{
+            width:65%;
+            text-align:center;
+        }
+
+        .header .navbar li{
+            list-style-type: none;
+            float:left;
+            text-align:center;
+            width:25%;
+            font-weight:bold;
+            font-size: 22px;
+            padding:42px 0;
+            cursor: pointer;
+        }
+
+        .header .navbar li:hover{
+            background-color: red;
+        }
+
+        .header .login{
+            width:17%;
+            text-align:center;
+        }
+
+        .header .login > p{
+            margin: 26px;
+            padding:15px 12px;
+            border-radius: 10px;
+            font-size:22px;
+            font-weight:bold;
+            background-color: red;
+            font-weight:bold;
+            color:black;
+            cursor:pointer;
+        }
+        .button{
+            height:60px;
+            width:200px;
+            background-color:red;
+            font-size:25px;
+            font-weight:bold;
+            border-radius:12px;
+            border:none;
+            cursor:pointer;
+        }
+                
+    </style>
+</html>
