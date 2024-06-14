@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styleCadLog.css">
         <title>Login</title>
     </head>
+
     <body>
 
         <!-- Cabeçalho -->
@@ -13,7 +14,7 @@
         <div class="header">
             <a href="index.html">
                 <div class="logo">
-                    CineMarkson
+                    CineClick
                 </div>
             </a>
             <div class="navbar">
@@ -27,13 +28,15 @@
         </div>
 
         <div class="box">
-            <h1>Login</h1>
-            <form action="">
+            <h1 class="id">Login</h1>
+            <form >
                 <input type="text" class="email" name="email" placeholder="email">
                 <input type="password" class="senha" name="senha" placeholder="senha">
+                <p class="usuarioNaoEncontrado"></p>
                 <a href="cadastro.html">Não possui cadastro?</a>
-                <button class="button">Entrar</button>
             </form>
+            <button class="button" onclick="newClick()">Entrar</button>
+
 
         </div>       
     </body>
@@ -43,47 +46,147 @@
 
         <!-- ======== SCRIPT ======== -->
 
-    <script>
-     
-    const formulario = document.querySelector("form");
-    const Iemail = document.querySelector(".email");
-    const Isenha = document.querySelector(".senha");
+    <SCript>
+        const Iemail = document.querySelector(".email");
+        const Isenha = document.querySelector(".senha");
+        const usuarioNaoEncontrado = document.querySelector(".usuarioNaoEncontrado");
+        const endPoint = "http://localhost:8080/usuarios";
+        const palavraLogin = document.querySelector(".id");// Variável teste        
+        let id;
 
-        function validar() {
-            fetch("http://localhost:8080/usuarios",
-                {
-                    headers:{
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    method: "GET",
-                    body: JSON.stringify({
-                        email: Iemail.value,
-                        senha: Isenha.value,
-                    })
-                })
-            .then(function (res) {console.log(res)})
-            .catch(function (res) {console.log(res)})
+
+       
+        // Função principal, será executada quando clickar o botão:
+        function newClick() {
+            fetch(endPoint)
+            .then(res=>res.json())
+            .then(dados=>{
+
+            // Chamando a função 
+            id = validarUsuario(dados, Iemail, Isenha);
+
+            if (id != null) {
+                console.log("Foi para outra página");
+                redirecionar();
+            };
+        });            
+        };
+
+
+        function redirecionar() {
+            window.location.replace("http://127.0.0.1:5501/index.html")
             
         };
 
-        formulario.addEventListener("submit", function(event){
-            event.preventDefault();
 
-            validar();
-            limpar();
+        // Função secundária, trabalhar nela:
+        function validarUsuario(usuarios, email, senha) {
             
-        });
+            // const: Variável constante não muda:
+            const quantidadeDeUsuarios = usuarios.length;
+            let usuarioSelecionado = 0;
+            let validacaoDeUsuario;
+            let validacaoDeSenha;
+            let indice;
+            let id;
+            
 
-        function limpar(){
-            Iemail.value = "";
-            Isenha.value = "";
-        };
+            while (usuarioSelecionado != quantidadeDeUsuarios) {
+                usuarioNaoEncontrado.innerHTML = "";
+                validacaoDeUsuario = email.value == usuarios[usuarioSelecionado].email;
+                validacaoDeSenha = senha.value == usuarios[usuarioSelecionado].senha;
+
+                console.log(usuarioSelecionado);                
+                console.log("Usuario: "+usuarios[usuarioSelecionado].nome);
+                console.log(validacaoDeUsuario);
+                console.log(validacaoDeSenha);
+
+                /* Se o email e a senha estiverem certas, permitira o usuário entrar e 
+                a variável indice receberá o valor do indice da lista do usuário caso contrário
+                continuará a rodar o laço de repetição adicionando mais 1 a variavel de contagem*/
+                if (validacaoDeSenha && validacaoDeUsuario == true) {
+                    indice = usuarioSelecionado;
+                    break;                    
+                }else{
+                    usuarioSelecionado++;
+
+                };
+
+            }
+            /* O id recebe o valor do indice do usuario na lista e adiciona
+             mais um para criar o valor do id do usuário do banco de dados*/
+            id = indice+1;
+
+            /* Se o indice não receber um valor da condição acima significa que a senha ou o email
+             estão errados e não permitirá a entrada do usuário, mostrando a mensagem que o usuário
+             não foi encontrado. Caso contrário ele retornará o indice do usuário que será usado na maioria
+             das outras páginas*/ 
+            if (indice == null) {
+                Iemail.value = "";
+                Isenha.value = "";
+                usuarioNaoEncontrado.innerHTML = "Usuario não encontrado";
+            }else{
+                console.log("id = "+id);
+                usuarioNaoEncontrado.innerHTML = "Usuario: "+ usuarios[indice].nome; // login vira o id (teste)
+                console.log("Indice = "+indice);
+                return (indice);
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+            // Função map para separar os usuários: 
+            // usuarios.map( usuario => {
+
+            //     console.log(usuario);
+
+            //     if (usuario.email == email) {
+            //         console.log("OK");
+            //     }
+            //     mostraEmail.innerHTML += usuario.id;
+            //     mostraSenha.innerHTML += usuario.senha;
+            // }); 
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
-        
-
-    </script>
+    </SCript>
 
 
 
@@ -108,6 +211,7 @@
             height: 30px;
             border-radius: 30px;
             padding: 0 15px 0 15px;
+            color: black;
         }
         
         *{

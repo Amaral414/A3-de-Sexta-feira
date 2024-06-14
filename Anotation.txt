@@ -9,3 +9,8 @@ classe usuario{
     nome
     cpf
 }
+
+=== login ===
+pegar a entrada do input do login, 
+e comparar com um usuario do banco
+que esta vindo pelo get
